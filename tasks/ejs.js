@@ -11,6 +11,11 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('ejs_compile', 'compile ejs-compile templates', function() {
     var groups = [];
 
+    // EJS Config options
+    if(typeof this.data.options.delimiter !== 'undefined') {
+      ejs.delimiter = this.data.options.delimiter;
+    }
+
     /**
      * Compile an EJS template of a certain group
      *
@@ -21,6 +26,7 @@ module.exports = function(grunt) {
      */
     function compile(filename, content) {
       // compile
+
       var fn = ejs.compile(content, {
         client: true,
         compileDebug: true,

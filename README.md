@@ -21,11 +21,14 @@ Add the task to your config and specify the destination for the compiled file:
 grunt.initConfig({
     ejs_compile: {
         all: {
-    cwd: path.src_templates,
+            cwd: path.src_templates,
             src: ['**/*.ejs'],
             dest: path.build_templates,
             expand: true,
-            ext: '.js'
+            ext: '.js',
+            options: {
+              delimiter: '?'
+            }
         }
     }
 });
